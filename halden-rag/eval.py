@@ -169,7 +169,7 @@ def compare_runs() -> None:
         d = json.loads(f.read_text(encoding="utf-8"))
         s = d["summary"]
         fmt = lambda key, w: f"{s[key]:>{w}.2f}" if key in s else f"{'-':>{w}}"
-        print(f"{f.stem.split("__", 1)[1]:<58}{fmt('hit_at_k', 7)}{fmt('mrr', 6)}{fmt('answer_acc', 6)}"
+        print(f"{f.stem.split('__', 1)[1]:<58}{fmt('hit_at_k', 7)}{fmt('mrr', 6)}{fmt('answer_acc', 6)}"
               f"{fmt('refusal_acc', 8)}{fmt('cite_ok', 6)}{fmt('avg_input_tokens', 8)}")
 
 

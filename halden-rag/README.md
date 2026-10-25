@@ -20,6 +20,8 @@ The goal is an assistant that answers from the documents, **cites its sources**,
 
 ## Setup (Windows)
 
+Requires Python 3.10 or newer.
+
 ```
 python -m venv .venv
 .venv\Scripts\activate
