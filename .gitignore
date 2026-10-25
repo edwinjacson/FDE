@@ -3,6 +3,6 @@ API_KEY
 *.zip
 *.pdf
 *.txt
-files/
+files*/
 .idea/
 .vscode/
