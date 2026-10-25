@@ -4,3 +4,5 @@ API_KEY
 *.pdf
 *.txt
 files/
+.idea/
+.vscode/
