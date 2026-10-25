@@ -7,6 +7,7 @@ import re
 import time
 from dataclasses import dataclass
 from pathlib import Path
+from dotenv import load_dotenv
 
 import numpy as np
 
@@ -137,7 +138,7 @@ def format_context(results: list[tuple[Chunk, float]]) -> str:
 
 def get_client():
     import anthropic  # imported lazily so retrieval-only runs need no API key
-
+    load_dotenv()
     return anthropic.Anthropic()
 
 
