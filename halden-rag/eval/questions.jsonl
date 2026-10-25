@@ -1,0 +1,24 @@
+{"id": "q01", "category": "lookup", "question": "What is the minimum password length?", "gold_docs": ["it_security_policy.md"], "must_include": ["14"], "should_refuse": false}
+{"id": "q02", "category": "lookup", "question": "How quickly must I report a lost or stolen device?", "gold_docs": ["it_security_policy.md"], "must_include": ["2 hours|two hours"], "should_refuse": false}
+{"id": "q03", "category": "lookup", "question": "What is the response target for a SEV1 incident?", "gold_docs": ["incident_response_runbook.md"], "must_include": ["15 minutes|15 min"], "should_refuse": false}
+{"id": "q04", "category": "lookup", "question": "How often must the status page be updated during a SEV1?", "gold_docs": ["incident_response_runbook.md"], "must_include": ["30 minutes|30 min|half an hour"], "should_refuse": false}
+{"id": "q05", "category": "lookup", "question": "When does a post-incident review have to be finished?", "gold_docs": ["incident_response_runbook.md"], "must_include": ["5 working days|five working days|5 business days"], "should_refuse": false}
+{"id": "q06", "category": "lookup", "question": "How much is the home office equipment allowance?", "gold_docs": ["remote_work_policy.md"], "must_include": ["£250"], "should_refuse": false}
+{"id": "q07", "category": "lookup", "question": "How many days a year can I work from another country?", "gold_docs": ["remote_work_policy.md"], "must_include": ["20 days|20"], "should_refuse": false}
+{"id": "q08", "category": "lookup", "question": "Above what amount do I need a receipt?", "gold_docs": ["expenses_policy.md"], "must_include": ["£10"], "should_refuse": false}
+{"id": "q09", "category": "lookup", "question": "How long do I have to submit an expense claim?", "gold_docs": ["expenses_policy.md"], "must_include": ["30 days"], "should_refuse": false}
+{"id": "q10", "category": "table", "question": "What is the nightly hotel cap in London?", "gold_docs": ["expenses_policy.md"], "must_include": ["£180|180"], "should_refuse": false}
+{"id": "q11", "category": "noisy_ocr", "question": "How far in advance should flights be booked?", "gold_docs": ["travel_policy_scan.txt"], "must_include": ["14 days|two weeks"], "should_refuse": false}
+{"id": "q12", "category": "noisy_ocr", "question": "When is economy class required for flights?", "gold_docs": ["travel_policy_scan.txt"], "must_include": ["6 hours|six hours"], "should_refuse": false}
+{"id": "q13", "category": "lookup", "question": "At what contract value is director approval needed for a vendor?", "gold_docs": ["vendor_management.md"], "must_include": ["50,000|50k"], "should_refuse": false}
+{"id": "q14", "category": "conflict", "question": "How many days of annual leave does a full-time employee get?", "gold_docs": ["hr_handbook_2025_update.md"], "must_include": ["27"], "should_refuse": false}
+{"id": "q15", "category": "conflict", "question": "How many leave days can I carry over into next year?", "gold_docs": ["hr_handbook_2025_update.md"], "must_include": ["3 days|three days"], "should_refuse": false}
+{"id": "q16", "category": "conflict", "question": "What is the daily meal allowance when travelling in the UK?", "gold_docs": ["meeting_notes_2025_03.md"], "must_include": ["£30"], "should_refuse": false}
+{"id": "q17", "category": "conflict", "question": "How many days a week do I need to be in the office?", "gold_docs": ["remote_work_policy.md"], "must_include": ["3 days|three days"], "should_refuse": false}
+{"id": "q18", "category": "multi_doc", "question": "I lose my laptop while working abroad. What must I do and how fast?", "gold_docs": ["it_security_policy.md", "remote_work_policy.md"], "must_include": ["2 hours|two hours"], "should_refuse": false}
+{"id": "q19", "category": "multi_doc", "question": "We want to sign a £60,000 contract with a new vendor. What approvals and checks do we need first?", "gold_docs": ["vendor_management.md"], "must_include": ["director", "questionnaire"], "should_refuse": false}
+{"id": "q20", "category": "multi_doc", "question": "I'm travelling internationally. What is my daily meal allowance and nightly hotel cap?", "gold_docs": ["expenses_policy.md"], "must_include": ["£40|40", "£150|150"], "should_refuse": false}
+{"id": "q21", "category": "unanswerable", "question": "What percentage does the company contribute to my pension?", "gold_docs": [], "must_include": [], "should_refuse": true}
+{"id": "q22", "category": "unanswerable", "question": "What is the office dress code?", "gold_docs": [], "must_include": [], "should_refuse": true}
+{"id": "q23", "category": "unanswerable", "question": "How much maternity pay will I receive?", "gold_docs": [], "must_include": [], "should_refuse": true}
+{"id": "q24", "category": "unanswerable", "question": "What is the CEO's salary?", "gold_docs": [], "must_include": [], "should_refuse": true}
