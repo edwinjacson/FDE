@@ -1,0 +1,6 @@
+.env
+API_KEY
+*.zip
+*.pdf
+*.txt
+files/
