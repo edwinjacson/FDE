@@ -2,7 +2,6 @@
 API_KEY
 *.zip
 *.pdf
-*.txt
 files*/
 .idea/
 .vscode/

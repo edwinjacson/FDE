@@ -1,0 +1,6 @@
+anthropic
+numpy
+scikit-learn
+python-dotenv
+# Optional: semantic retrieval backend (--backend embed). Downloads a small model on first use.
+# fastembed

@@ -1,0 +1,17 @@
+HALDEN LOGISTICS - NEW STARTER FAQ (unofficial, maintained by the People team)
+Last edited: February 2023
+
+Q: How much holiday do I get?
+A: 25 days plus bank holidays. The holiday year is Jan-Dec so if you start mid-year you get a pro-rata amount.
+
+Q: Do I have to come into the office?
+A: Mostly yes - we expect 4 days a week in the office, 1 from home. Speak to your manager if that's a problem.
+
+Q: What laptop will I get?
+A: A standard-issue laptop which is refreshed every 3 years. Ask in #it-help on Slack if yours is slow.
+
+Q: Who do I ask for IT help?
+A: #it-help on Slack, or email the service desk. Do not ask in #general, they will not see it.
+
+Q: Where do I find my payslip?
+A: In the HR portal under "My pay". Payday is the last working day of the month.
