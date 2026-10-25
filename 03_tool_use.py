@@ -154,7 +154,7 @@ if __name__ == "__main__":
         "What's the status of order Z999?",          # tool error handling
         "What's your favourite colour?",             # no tools needed
         "How much is order A100 in US dollars?",     # chains get_order -> convert_currency (live API)
-        "How much is order A100 in Indian Rupees?"   # chains get_order -> convert_currency (live API)
+        "How much is order A100 in Indian Rupees?",   # chains get_order -> convert_currency (live API)
         "Convert 100 GBP to XYZ",                    # bad currency code -> 4xx error path
     ]
     for q in questions:
