@@ -2,5 +2,7 @@ anthropic
 numpy
 scikit-learn
 python-dotenv
-# Optional: semantic retrieval backend (--backend embed). Downloads a small model on first use.
+# Optional: semantic retrieval (--backend embed) and the vector database backend (--backend chroma).
+# fastembed downloads a small embedding model on first use.
 fastembed
+chromadb

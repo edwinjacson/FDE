@@ -22,7 +22,7 @@ def main() -> None:
         if not question:
             break
         retrieved = retriever.search(question, args.top_k)
-        answer, usage = generate(client, question, retrieved)
+        answer, usage = generate(client, question, retrieved, args.dates)
         print(f"\n{answer}\n")
         if not is_refusal(answer):
             print("cited:    ", extract_citations(answer) or "none (suspicious!)")

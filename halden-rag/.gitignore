@@ -4,3 +4,5 @@ __pycache__/
 .idea/
 # keep results out of git until you choose which runs to publish
 results/*.json
+# local Chroma database
+index/

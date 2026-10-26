@@ -13,7 +13,7 @@ The goal is an assistant that answers from the documents, **cites its sources**,
 | File | Purpose |
 |------|---------|
 | `docs/` | 10 documents: handbook + update, expenses, remote work, IT security, incident runbook, vendors, OCR-noisy travel policy, messy meeting notes, stale FAQ |
-| `rag.py` | Chunking, two retrievers (TF-IDF keyword, local embeddings), generation with citations |
+| `rag.py` | Chunking, three retrievers (TF-IDF keyword, embeddings in NumPy, embeddings in a persistent Chroma vector database), document dates as metadata, generation with citations |
 | `eval.py` | Evaluation harness with retrieval and answer metrics, saved runs, comparison table |
 | `ask.py` | Interactive Q&A |
 | `eval/questions.jsonl` | 24 questions: lookups, a table, OCR noise, conflicting documents, multi-document, and 4 unanswerable |
@@ -50,8 +50,21 @@ Change one thing at a time, then record the numbers.
 | 4 | Does a filename header help? | `python eval.py --chunk-size 300 --overlap 50 --header` | | | | |
 | 5 | Semantic vs keyword retrieval | `python eval.py --backend embed` | | | | |
 | 6 | Semantic with small chunks, few results | `python eval.py --backend embed --chunk-size 300 --top-k 2` | | | | |
+| 7 | Does a vector database change quality? (should match #5) | `python eval.py --backend chroma` | | | | |
+| 8 | Do document dates fix the conflict questions? | `python eval.py --backend chroma --dates` | | | | |
+| 9 | What does a blunt metadata filter do? | `python eval.py --backend chroma --after 2025-01-01 --top-k 2` | | | | |
 
-Embeddings need `pip install fastembed` (downloads a small model on first run).
+Embeddings need `pip install fastembed` (downloads a small model on first run). The Chroma backend also needs `pip install chromadb`.
+
+### The vector database backend
+
+`--backend chroma` stores the same embeddings as `--backend embed`, but in a persistent Chroma database in the `index/` folder:
+
+- **Persistence.** Chunks are embedded once. Later runs print `reusing index` instead of re-embedding. The index name is a hash of the chunk contents, so changing `--chunk-size`, `--overlap` or `--header` builds a fresh one automatically. Delete `index/` to reset.
+- **Metadata.** Every chunk stores its source file and the document date parsed from the header (`Last updated: ...`). The OCR-garbled travel policy has no readable date, so its date is unknown.
+- **Experiment 7** should give results close to experiment 5. If the numbers differ a lot, something is wrong with the storage layer rather than the retrieval idea.
+- **Experiment 8** (`--dates`) shows each document's date to the model. It works with any backend. Watch the `conflict` category: does the model now pick the 2025 leave policy and the March 2025 meal allowance?
+- **Experiment 9** (`--after`) filters retrieval to newer documents. It will probably hurt: the filter removes the old but still valid documents too, so lookups for things that never changed start failing. A good finding to explain: date filtering is a blunt tool, and dates are better used as a signal than as a hard filter.
 
 ## Findings
 

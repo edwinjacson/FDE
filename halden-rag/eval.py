@@ -6,6 +6,7 @@ Retrieval metrics need NO API key:
 Full run (retrieval + answers from Claude):
     python eval.py
     python eval.py --backend embed --top-k 6 --header
+    python eval.py --backend chroma --dates
 
 Compare all saved runs:
     python eval.py --compare
@@ -58,7 +59,8 @@ def run_eval(args) -> None:
 
     chunks, retriever = build_pipeline(args)
     print(f"{len(chunks)} chunks | backend={args.backend} size={args.chunk_size} "
-          f"overlap={args.overlap} top_k={args.top_k} header={args.header}\n")
+          f"overlap={args.overlap} top_k={args.top_k} header={args.header} dates={args.dates} "
+          f"after={args.after}\n")
 
     client = None if args.retrieval_only else get_client()
     rows = []
@@ -74,7 +76,7 @@ def run_eval(args) -> None:
             row["rr"] = 1 / rank if rank else 0.0
 
         if client:
-            answer, usage = generate(client, q["question"], retrieved)
+            answer, usage = generate(client, q["question"], retrieved, args.dates)
             cites = extract_citations(answer)
             row.update(answer=answer, usage=usage, citations=cites)
             if q["should_refuse"]:
@@ -150,10 +152,12 @@ def print_report(rows, summary, has_answers: bool) -> None:
 
 def save_run(args, rows, summary) -> None:
     RESULTS_DIR.mkdir(exist_ok=True)
-    config = {k: getattr(args, k) for k in ("backend", "chunk_size", "overlap", "top_k", "header")}
+    config = {k: getattr(args, k) for k in ("backend", "chunk_size", "overlap", "top_k", "header", "dates", "after")}
     config["retrieval_only"] = args.retrieval_only
     name = (f"{time.strftime('%Y%m%d-%H%M%S')}__{args.backend}_c{args.chunk_size}_o{args.overlap}"
-            f"_k{args.top_k}{'_hdr' if args.header else ''}{'_retonly' if args.retrieval_only else ''}.json")
+            f"_k{args.top_k}{'_hdr' if args.header else ''}{'_dates' if args.dates else ''}"
+            f"{'_after' + args.after.replace('-', '') if args.after else ''}"
+            f"{'_retonly' if args.retrieval_only else ''}.json")
     (RESULTS_DIR / name).write_text(json.dumps({"config": config, "summary": summary, "rows": rows},
                                                indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\nSaved results/{name}")
