@@ -1,0 +1,11 @@
+docs/*.md, *.txt
+      |
+ load_documents  -->  chunk_text / build_chunks  -->  list of Chunk(id, source, text)
+                                                              |
+                                        build the retriever (TF-IDF or embeddings)
+                                                              |
+question --> retriever.search(question, top_k) --> top chunks
+                                                              |
+                  put chunks + question into a prompt --> Claude --> answer with [source: id] citations
+                                                              |
+                                eval.py scores retrieval, answer, refusal and citations
